@@ -9,7 +9,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SPAUserChoiceViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -24,23 +24,8 @@
                                 <color key="textColor" red="0.99607843159999998" green="0.31764706970000001" blue="0.38039216399999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" id="7Kn-Ok-UeJ" userLabel="electric guitar">
-                                <rect key="frame" x="92" y="100" width="60" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="fnq-rB-Veq" userLabel="guitar">
-                                <rect key="frame" x="168" y="100" width="60" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="iRH-eb-P7d" userLabel="banjo">
-                                <rect key="frame" x="244" y="100" width="60" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" id="KX9-j9-add" userLabel="bassContentView">
-                                <rect key="frame" x="20" y="100" width="60" height="240"/>
+                                <rect key="frame" x="16" y="100" width="60" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="SkD-rm-hHm" customClass="SPAReflectingView">
@@ -68,6 +53,43 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" id="7Kn-Ok-UeJ" userLabel="electric guitar">
+                                <rect key="frame" x="92" y="100" width="60" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="fnq-rB-Veq" userLabel="guitar">
+                                <rect key="frame" x="168" y="100" width="60" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="iRH-eb-P7d" userLabel="banjo">
+                                <rect key="frame" x="244" y="100" width="60" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="zeG-qN-mnZ" userLabel="textFieldContentView">
+                                <rect key="frame" x="16" y="436" width="288" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Type your name here" textAlignment="center" minimumFontSize="17" id="8SI-qN-fCm">
+                                        <rect key="frame" x="0.0" y="3" width="288" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Pn1-BP-ICS"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="H3v-oG-D3G" userLabel="Line View">
+                                        <rect key="frame" x="20" y="32" width="244" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -75,6 +97,9 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="c3G-rT-itK" id="0aU-fL-e3l"/>
                         <outlet property="bassReflectingView" destination="SkD-rm-hHm" id="gnJ-um-ubt"/>
+                        <outlet property="scrollView" destination="8bC-Xf-vdC" id="VRX-8E-C9i"/>
+                        <outlet property="textFieldContentView" destination="zeG-qN-mnZ" id="a2M-ou-x9B"/>
+                        <outlet property="userNameTextFiled" destination="8SI-qN-fCm" id="A4i-GL-8ZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

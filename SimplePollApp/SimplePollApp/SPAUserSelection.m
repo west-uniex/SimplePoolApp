@@ -1,22 +1,24 @@
 //
-//  SPAUser.m
+//  SPAUserSelection.m
 //  SimplePollApp
 //
 //  Created by Developer on 1/12/16.
 //  Copyright © 2016 Developer. All rights reserved.
 //
 
-#import "SPAUser.h"
+#import "SPAUserSelection.h"
 
-@implementation SPAUser
+@implementation SPAUserSelection
 
 #pragma	mark	Designated initializer
 
-- (instancetype) initWithName: (NSString *) name
+- (instancetype)     initWithName: (NSString         *) name
+				andGenreSelection: (SPASelectionState ) selection
 {
 	if ((self = [super init]))
 	{
-		_name = name;
+		_name           = name;
+		_genreSelection = selection;
 	}
 	
 	return self;
@@ -27,9 +29,10 @@
 - (instancetype) init
 {
 	@throw [NSException  exceptionWithName: NSInternalInconsistencyException
-									reason: @"Must use initWithName: instead."
+									reason: @"Must use initWithName: andGenreSelection: instead."
 								  userInfo: nil];
 }
+
 
 #pragma	mark	Initializer from NSCoding
 
@@ -52,21 +55,23 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	SPAUser *newUser = [[[self class] allocWithZone: zone] init];
+	SPAUserSelection *newUserSelecrion = [[[self class] allocWithZone: zone] init];
 	
-	if(newUser)
+	if(newUserSelecrion)
 	{
-		newUser->_name = [self name];
+		newUserSelecrion->_name           = [self name];
+		newUserSelecrion->_genreSelection = [self genreSelection];
 	}
 	
-	return newUser;
+	return newUserSelecrion;
 }
 
 
 - (NSString *) description
 {
-	return [NSString stringWithFormat:@"Name:%@", self.name];
+	return [NSString stringWithFormat:@"Name:%@\nDenre Selection = %ul", self.name, self.genreSelection];
 }
+
 
 
 @end

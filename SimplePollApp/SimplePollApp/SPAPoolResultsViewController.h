@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPAUser;
+@class SPAUserSelection;
 
 @interface SPAPoolResultsViewController : UIViewController
 
-@property (nonatomic, strong) SPAUser *currentUser;
+@property (nonatomic, strong) SPAUserSelection *currentUserSelection;
 
 @end

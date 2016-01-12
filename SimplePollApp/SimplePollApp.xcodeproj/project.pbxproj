@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1E5F1E1C45497100777F30 /* SPAUserSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E5F1D1C45497100777F30 /* SPAUserSelection.m */; };
 		8B7CA0B91C43CE870070B436 /* MyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CA0B81C43CE870070B436 /* MyDownloader.m */; };
 		8B7CA0BC1C43D5690070B436 /* SPAWebServiceAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CA0BB1C43D5690070B436 /* SPAWebServiceAPI.m */; };
 		8B7CA0BF1C4411DF0070B436 /* SPAUserChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CA0BE1C4411DF0070B436 /* SPAUserChoiceViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B1E5F1C1C45497100777F30 /* SPAUserSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAUserSelection.h; sourceTree = "<group>"; };
+		8B1E5F1D1C45497100777F30 /* SPAUserSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAUserSelection.m; sourceTree = "<group>"; };
 		8B7CA0B71C43CE870070B436 /* MyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownloader.h; sourceTree = "<group>"; };
 		8B7CA0B81C43CE870070B436 /* MyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownloader.m; sourceTree = "<group>"; };
 		8B7CA0BA1C43D5690070B436 /* SPAWebServiceAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAWebServiceAPI.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 			children = (
 				8BA6095F1C450DCA0009C2F8 /* SPAUser.h */,
 				8BA609601C450DCA0009C2F8 /* SPAUser.m */,
+				8B1E5F1C1C45497100777F30 /* SPAUserSelection.h */,
+				8B1E5F1D1C45497100777F30 /* SPAUserSelection.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				8B7CA0C21C4413B70070B436 /* SPACurrentModel.m in Sources */,
 				8B7CA0BC1C43D5690070B436 /* SPAWebServiceAPI.m in Sources */,
 				8B96B7DF1C41829A006D05A9 /* SPAReflectingView.m in Sources */,
+				8B1E5F1E1C45497100777F30 /* SPAUserSelection.m in Sources */,
 				8B96B7C21C411AA5006D05A9 /* AppDelegate.m in Sources */,
 				8B7CA0B91C43CE870070B436 /* MyDownloader.m in Sources */,
 				8BA609611C450DCA0009C2F8 /* SPAUser.m in Sources */,

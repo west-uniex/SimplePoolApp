@@ -10,14 +10,27 @@
 #import "SPACurrentModel.h"
 #import "SPAREflectingView.h"
 #import "SPAPoolResultsViewController.h"
-#import "SPAUser.h"
+#import "SPAUserSelection.h"
 
-@interface SPAUserChoiceViewController ()
+#define BARBUTTON(TITLE, SELECTOR) [[UIBarButtonItem alloc] initWithTitle:TITLE style:UIBarButtonItemStylePlain target:self action:SELECTOR]
+#define SYSBARBUTTON(ITEM, SELECTOR) [[UIBarButtonItem alloc] initWithBarButtonSystemItem:ITEM target:self action:SELECTOR]
+
+@interface SPAUserChoiceViewController () <UITextFieldDelegate>
+
+{
+	UIToolbar   * _tb;
+	UITextField * _editedTextField;
+	
+}
+//
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UIImageView       *backgroundImageView;
 
 @property (weak, nonatomic) IBOutlet SPAReflectingView *bassReflectingView;
 
+@property (weak, nonatomic) IBOutlet UIView            *textFieldContentView;
+@property (weak, nonatomic) IBOutlet UITextField       *userNameTextFiled;
 
 @property (assign, nonatomic, getter=isUserNameSet) BOOL userNameSet;
 
@@ -75,6 +88,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark accesory view
+
+- (UIToolbar *) accessoryView
+{
+	_tb           = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 44.0f)];
+	_tb.tintColor = [UIColor darkGrayColor];
+	
+	NSMutableArray *items = [NSMutableArray array];
+	[items addObject:BARBUTTON(@"Clear", @selector(clearText))];
+	[items addObject:SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace, nil)];
+	[items addObject:BARBUTTON(@"Done", @selector(leaveKeyboardMode))];
+	_tb.items = items;
+	
+	return _tb;
+}
+
+- (void) clearText
+{
+	[_editedTextField setText:@""];
+}
+
+- (void) leaveKeyboardMode
+{
+	[_editedTextField resignFirstResponder];
+}
+
+
+
+
+
 /*
 #pragma mark - Navigation
 
@@ -90,6 +133,20 @@
 	return UIStatusBarStyleLightContent;
 }
 
+
+
+
+- (BOOL) isUserNameSet
+{
+	//Type your name here
+	if ( (self.userNameTextFiled.text.length > 0) && (![self.userNameTextFiled.text isEqualToString: @" "]) && (![self.userNameTextFiled.text isEqualToString: @"Type your name here"])) // need description forbidden names
+	{
+		return YES;
+	}
+	
+	return NO;
+}
+
 #pragma mark  IB Actions
 
 
@@ -97,16 +154,29 @@
 {
 	if ( self.isUserNameSet == NO)
 	{
-		DLog(@"please set name \n\n");
+		//DLog(@"please set name \n\n");
+		
+		UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"user name is mandatory"
+																	   message: @"please fill correct name"
+																preferredStyle: UIAlertControllerStyleAlert];
+		
+		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+																style: UIAlertActionStyleDefault
+															  handler: ^(UIAlertAction * action) {}];
+		
+		[alert addAction:defaultAction];
+		[self presentViewController:alert animated:YES completion:nil];
+		
 		return;
 	}
 	
-	SPAUser *currentUser = [[SPAUser alloc] initWithName: @"Vasya"];
+	SPAUserSelection *currentUserSelection = [[SPAUserSelection alloc] initWithName: self.userNameTextFiled.text
+																  andGenreSelection: SPASelectionStateBassSelected];
 	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main"
 														 bundle: nil];
 	SPAPoolResultsViewController *viewController   = (SPAPoolResultsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SPAPoolResultsViewControllerId"];
-	viewController.currentUser = currentUser;
+	viewController.currentUserSelection = currentUserSelection;
 
 	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: viewController];
 	[self presentViewController: nc
@@ -114,5 +184,78 @@
 					 completion: nil];
 
 }
+
+#pragma mark
+#pragma mark  UITextFieldDelegate conforming
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	// Catch returns to resign first responder for the text field
+	[textField resignFirstResponder];
+	return YES;
+}
+
+
+// became first responder
+- (void)textFieldDidBeginEditing:(UITextField *) textField
+{
+	DLog(@" \n\n");
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone4])
+	{
+		if (textField == self.userNameTextFiled)
+		{
+			self.scrollView.contentOffset = CGPointMake(0, 320);
+		}
+		self.scrollView.contentSize = CGSizeMake(320, 750);
+	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone5])
+	{
+		if (textField == self.userNameTextFiled)
+		{
+			self.scrollView.contentOffset = CGPointMake(0, 280);
+		}
+		
+		self.scrollView.contentSize = CGSizeMake(320, 750);
+	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6])
+	{
+		self.scrollView.contentSize = CGSizeMake(320, 849);
+	}
+	
+	_editedTextField                    = textField;
+	_editedTextField.inputAccessoryView = [self accessoryView];
+	
+	[self clearText];
+	
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	//DLog(@" \n\n");
+	
+	self.scrollView.contentOffset = CGPointMake(0, -70);
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone4])
+	{
+		self.scrollView.contentSize = CGSizeMake(320, 414);
+	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone5])
+	{
+		self.scrollView.contentSize = CGSizeMake(320, 504);
+	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6])
+	{
+		self.scrollView.contentSize = CGSizeMake(320, 603);
+	}
+	
+	_editedTextField = nil;
+}
+
+
 
 @end
