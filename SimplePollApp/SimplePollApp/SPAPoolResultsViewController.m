@@ -67,6 +67,8 @@
 	NSURLSessionDataTask *postUserChoiceTask = [session dataTaskWithRequest: requestGenreChoice
 														  completionHandler: ^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error)
 	{
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		
 		DLog(@"%@", @"here");
 		if (error)
 		{
@@ -78,10 +80,31 @@
 		NSInteger status = [(NSHTTPURLResponse*)response statusCode];
 		DLog(@"response status: %i", status);
 		
-		if (status != 200)
+		if (status != 200 )
 		{
 			DLog(@"%@", @"oh well");
-			return;
+			
+			if (status == 403 )
+			{
+				__weak UIViewController *pvc =  self.presentingViewController;
+			
+				[self dismissViewControllerAnimated: YES
+										 completion: ^(void)
+				 {
+					 UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"we does not have permission to get URL"
+																			   message: @"please be patient"
+																		preferredStyle: UIAlertControllerStyleAlert];
+				
+					 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+																		style: UIAlertActionStyleDefault
+																	  handler: ^(UIAlertAction * action) {}];
+				
+					 [alert addAction:defaultAction];
+					 [pvc presentViewController:alert animated:YES completion:nil];
+				
+				 }];
+				return;
+			}
 		}
 		
 
