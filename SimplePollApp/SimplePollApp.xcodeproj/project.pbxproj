@@ -15,8 +15,9 @@
 		8B96B7C21C411AA5006D05A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B7C11C411AA5006D05A9 /* AppDelegate.m */; };
 		8B96B7C81C411AA5006D05A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B96B7C61C411AA5006D05A9 /* Main.storyboard */; };
 		8B96B7CA1C411AA5006D05A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B96B7C91C411AA5006D05A9 /* Assets.xcassets */; };
-		8B96B7D51C411D31006D05A9 /* TaskDescription in Resources */ = {isa = PBXBuildFile; fileRef = 8B96B7D41C411D31006D05A9 /* TaskDescription */; };
 		8B96B7DF1C41829A006D05A9 /* SPAReflectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B7DE1C41829A006D05A9 /* SPAReflectingView.m */; };
+		8BA6095E1C4506CE0009C2F8 /* SPAPoolResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6095D1C4506CE0009C2F8 /* SPAPoolResultsViewController.m */; };
+		8BA609611C450DCA0009C2F8 /* SPAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA609601C450DCA0009C2F8 /* SPAUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +37,12 @@
 		8B96B7C71C411AA5006D05A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B96B7C91C411AA5006D05A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B96B7CE1C411AA5006D05A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B96B7D41C411D31006D05A9 /* TaskDescription */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TaskDescription; sourceTree = "<group>"; };
 		8B96B7DD1C41829A006D05A9 /* SPAReflectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAReflectingView.h; sourceTree = "<group>"; };
 		8B96B7DE1C41829A006D05A9 /* SPAReflectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAReflectingView.m; sourceTree = "<group>"; };
+		8BA6095C1C4506CE0009C2F8 /* SPAPoolResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAPoolResultsViewController.h; sourceTree = "<group>"; };
+		8BA6095D1C4506CE0009C2F8 /* SPAPoolResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPoolResultsViewController.m; sourceTree = "<group>"; };
+		8BA6095F1C450DCA0009C2F8 /* SPAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAUser.h; sourceTree = "<group>"; };
+		8BA609601C450DCA0009C2F8 /* SPAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,6 @@
 		8B96B7B11C411AA4006D05A9 = {
 			isa = PBXGroup;
 			children = (
-				8B96B7D41C411D31006D05A9 /* TaskDescription */,
 				8B96B7BC1C411AA5006D05A9 /* SimplePollApp (SPA) */,
 				8B96B7BB1C411AA5006D05A9 /* Products */,
 			);
@@ -121,6 +124,8 @@
 				8B7CA0C11C4413B70070B436 /* SPACurrentModel.m */,
 				8B7CA0BD1C4411DF0070B436 /* SPAUserChoiceViewController.h */,
 				8B7CA0BE1C4411DF0070B436 /* SPAUserChoiceViewController.m */,
+				8BA6095C1C4506CE0009C2F8 /* SPAPoolResultsViewController.h */,
+				8BA6095D1C4506CE0009C2F8 /* SPAPoolResultsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +142,8 @@
 		8B96B7DB1C4170EF006D05A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8BA6095F1C450DCA0009C2F8 /* SPAUser.h */,
+				8BA609601C450DCA0009C2F8 /* SPAUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -208,7 +215,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B96B7CA1C411AA5006D05A9 /* Assets.xcassets in Resources */,
-				8B96B7D51C411D31006D05A9 /* TaskDescription in Resources */,
 				8B96B7C81C411AA5006D05A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,11 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA6095E1C4506CE0009C2F8 /* SPAPoolResultsViewController.m in Sources */,
 				8B7CA0C21C4413B70070B436 /* SPACurrentModel.m in Sources */,
 				8B7CA0BC1C43D5690070B436 /* SPAWebServiceAPI.m in Sources */,
 				8B96B7DF1C41829A006D05A9 /* SPAReflectingView.m in Sources */,
 				8B96B7C21C411AA5006D05A9 /* AppDelegate.m in Sources */,
 				8B7CA0B91C43CE870070B436 /* MyDownloader.m in Sources */,
+				8BA609611C450DCA0009C2F8 /* SPAUser.m in Sources */,
 				8B96B7BF1C411AA5006D05A9 /* main.m in Sources */,
 				8B7CA0BF1C4411DF0070B436 /* SPAUserChoiceViewController.m in Sources */,
 			);

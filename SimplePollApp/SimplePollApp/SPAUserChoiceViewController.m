@@ -8,10 +8,22 @@
 
 #import "SPAUserChoiceViewController.h"
 #import "SPACurrentModel.h"
+#import "SPAREflectingView.h"
+#import "SPAPoolResultsViewController.h"
+#import "SPAUser.h"
 
 @interface SPAUserChoiceViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView       *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet SPAReflectingView *bassReflectingView;
+
+
+@property (assign, nonatomic, getter=isUserNameSet) BOOL userNameSet;
+
+// actions
+
+- (IBAction)bassButtonDidTap:(id)sender;
 
 
 @end
@@ -52,7 +64,9 @@
 	{
 		
 	}
-
+	
+	[self.bassReflectingView setupReflectionWithShrinkFactor: 1.0 ];
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,5 +90,29 @@
 	return UIStatusBarStyleLightContent;
 }
 
+#pragma mark  IB Actions
+
+
+- (IBAction)bassButtonDidTap:(id)sender
+{
+	if ( self.isUserNameSet == NO)
+	{
+		DLog(@"please set name \n\n");
+		return;
+	}
+	
+	SPAUser *currentUser = [[SPAUser alloc] initWithName: @"Vasya"];
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main"
+														 bundle: nil];
+	SPAPoolResultsViewController *viewController   = (SPAPoolResultsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SPAPoolResultsViewControllerId"];
+	viewController.currentUser = currentUser;
+
+	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: viewController];
+	[self presentViewController: nc
+					   animated: YES
+					 completion: nil];
+
+}
 
 @end

@@ -11,10 +11,12 @@
 @implementation SPAReflectingView
 
 // Always use a replicator as the base layer
+
 + (Class) layerClass
 {
 	return [CAReplicatorLayer class];
 }
+
 
 - (void) setupReflectionWithShrinkFactor: (float) shrinkFactor
 {
@@ -25,7 +27,7 @@
 	// scaling centers the shadow in the view. translate in shrunken terms
 	float offsetFromBottom = height * ((1.0f - shrinkFactor) / 2.0f);
 	float inverse          = 1.0 / shrinkFactor;
-	float desiredGap       = 10.0f;
+	float desiredGap       = 0.0f;
 	t = CATransform3DTranslate(t, 0.0, -offsetFromBottom * inverse - height - inverse * desiredGap, 0.0f);
 	
 	CAReplicatorLayer *replicatorLayer = (CAReplicatorLayer*)self.layer;
@@ -36,6 +38,11 @@
 	replicatorLayer.instanceRedOffset   = -0.75;
 	replicatorLayer.instanceGreenOffset = -0.75;
 	replicatorLayer.instanceBlueOffset  = -0.75;
+	
+	replicatorLayer.instanceRedOffset   = -0.65;
+	replicatorLayer.instanceGreenOffset = -0.65;
+	replicatorLayer.instanceBlueOffset  = -0.65;
+
 }
 
 @end
