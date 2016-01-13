@@ -28,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView       *backgroundImageView;
 
 @property (weak, nonatomic) IBOutlet SPAReflectingView *bassReflectingView;
+@property (weak, nonatomic) IBOutlet SPAReflectingView *electricReflectingView;
+@property (weak, nonatomic) IBOutlet SPAReflectingView *guitarReflectingView;
+@property (weak, nonatomic) IBOutlet SPAReflectingView *banjoReflectingView;
 
 @property (weak, nonatomic) IBOutlet UIView            *textFieldContentView;
 @property (weak, nonatomic) IBOutlet UITextField       *userNameTextFiled;
@@ -36,7 +39,10 @@
 
 // actions
 
-- (IBAction)bassButtonDidTap:(id)sender;
+- (IBAction) bassButtonDidTap:    (id) sender;
+- (IBAction)electricButtonDidTap: (id) sender;
+- (IBAction)guitarButtonDidTap:(id)sender;
+- (IBAction)banjoButtobDidTap:(id)sender;
 
 
 @end
@@ -46,12 +52,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
 	self.navigationController.navigationBarHidden = YES;
 
 	[self setNeedsStatusBarAppearanceUpdate];
-	
-	//CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-
 	
 	CGRect mainScreenFrame         = [[UIScreen mainScreen] bounds];
 	
@@ -78,7 +82,10 @@
 		
 	}
 	
-	[self.bassReflectingView setupReflectionWithShrinkFactor: 1.0 ];
+	[self.bassReflectingView     setupReflectionWithShrinkFactor: 1.0 ];
+	[self.electricReflectingView setupReflectionWithShrinkFactor: 1.0 ];
+	[self.guitarReflectingView   setupReflectionWithShrinkFactor: 1.0 ];
+	[self.banjoReflectingView    setupReflectionWithShrinkFactor: 1.0 ];
 	
 }
 
@@ -147,8 +154,46 @@
 	return NO;
 }
 
-#pragma mark  IB Actions
+#pragma mark internal methods for button senders
 
+-(void) xxxHandlingTapButtonForGenreSelection: (SPASelectionState) genreSelection
+{
+	if ( self.isUserNameSet == NO)
+	{
+		//DLog(@"please set name \n\n");
+		
+		UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"user name is mandatory"
+																	   message: @"please fill correct name"
+																preferredStyle: UIAlertControllerStyleAlert];
+		
+		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+																style: UIAlertActionStyleDefault
+															  handler: ^(UIAlertAction * action) {}];
+		
+		[alert addAction:defaultAction];
+		[self presentViewController:alert animated:YES completion:nil];
+		
+		return;
+	}
+	
+	SPAUserSelection *currentUserSelection = [[SPAUserSelection alloc] initWithName: self.userNameTextFiled.text
+																  andGenreSelection: genreSelection];
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main"
+														 bundle: nil];
+	SPAPoolResultsViewController *viewController   = (SPAPoolResultsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SPAPoolResultsViewControllerId"];
+	viewController.currentUserSelection = currentUserSelection;
+	
+	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController: viewController];
+	[self presentViewController: nc
+					   animated: YES
+					 completion: nil];
+	
+
+}
+
+
+#pragma mark  IB Actions
 
 - (IBAction)bassButtonDidTap:(id)sender
 {
@@ -183,6 +228,21 @@
 					   animated: YES
 					 completion: nil];
 
+}
+
+- (IBAction) electricButtonDidTap: (id) sender
+{
+	[self xxxHandlingTapButtonForGenreSelection: SPASelectionStateElectricGuitarSelected];
+}
+
+- (IBAction) guitarButtonDidTap: (id) sender
+{
+	[self xxxHandlingTapButtonForGenreSelection: SPASelectionStateGuitarSelected];
+}
+
+- (IBAction) banjoButtobDidTap: (id) sender
+{
+	[self xxxHandlingTapButtonForGenreSelection: SPASelectionStateBanjoSelected];
 }
 
 #pragma mark

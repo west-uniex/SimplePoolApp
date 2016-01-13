@@ -56,16 +56,88 @@
                             <view contentMode="scaleToFill" id="7Kn-Ok-UeJ" userLabel="electric guitar">
                                 <rect key="frame" x="92" y="100" width="60" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="IjE-0D-AgE" userLabel="Electruc Reflecting View" customClass="SPAReflectingView">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="electricBackground" id="mDE-Qc-Dif" userLabel="electric background image view">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bass" id="QPE-l6-Wdn" userLabel="electric logo Image View">
+                                                <rect key="frame" x="10" y="0.0" width="45" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Sf-eG-gDh">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="electricButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vT0-wV-otF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="fnq-rB-Veq" userLabel="guitar">
                                 <rect key="frame" x="168" y="100" width="60" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="nTH-m8-cJY" userLabel="Guitar Reflecting View" customClass="SPAReflectingView">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guitarBackground" id="spG-R3-CZk" userLabel="guitar background image view">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guitar" id="uXa-X8-7sb" userLabel="guitar logo Image View">
+                                                <rect key="frame" x="7" y="0.0" width="46" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FR6-a8-rPJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="guitarButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zo0-DD-8WX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="iRH-eb-P7d" userLabel="banjo">
                                 <rect key="frame" x="244" y="100" width="60" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="mZU-mV-Esd" userLabel="Banjo Reflecting View" customClass="SPAReflectingView">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banjoBackground" id="oXI-Pi-hMV" userLabel="banjo background image view">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banjo" id="IGL-eu-rPX" userLabel="bango logo Image View">
+                                                <rect key="frame" x="4" y="0.0" width="45" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aTi-l2-nqa">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="banjoButtobDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbB-Hy-DeV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="zeG-qN-mnZ" userLabel="textFieldContentView">
@@ -96,7 +168,10 @@
                     <navigationItem key="navigationItem" id="vHS-Bc-6XL"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="c3G-rT-itK" id="0aU-fL-e3l"/>
+                        <outlet property="banjoReflectingView" destination="mZU-mV-Esd" id="Syx-lo-51Z"/>
                         <outlet property="bassReflectingView" destination="SkD-rm-hHm" id="gnJ-um-ubt"/>
+                        <outlet property="electricReflectingView" destination="IjE-0D-AgE" id="hfS-cq-Sze"/>
+                        <outlet property="guitarReflectingView" destination="nTH-m8-cJY" id="1CA-ng-dVW"/>
                         <outlet property="scrollView" destination="8bC-Xf-vdC" id="VRX-8E-C9i"/>
                         <outlet property="textFieldContentView" destination="zeG-qN-mnZ" id="a2M-ou-x9B"/>
                         <outlet property="userNameTextFiled" destination="8SI-qN-fCm" id="A4i-GL-8ZH"/>
@@ -104,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="121"/>
+            <point key="canvasLocation" x="-268" y="90"/>
         </scene>
         <!--Pool Results View Controller-->
         <scene sceneID="G9k-0N-m33">
@@ -113,17 +188,167 @@
                     <view key="view" contentMode="scaleToFill" id="fwX-G5-EHP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="backgroundImage" id="9WQ-e8-bLw">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dIR-op-dWL">
+                                <rect key="frame" x="40" y="39" width="240" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.99607843159999998" green="0.31764706970000001" blue="0.38039216399999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username                   38% also like the red one!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.34999999999999998" id="2Lp-CL-97L">
+                                <rect key="frame" x="30" y="443" width="260" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="Cvf-39-KI8" userLabel="guitar content View">
+                                <rect key="frame" x="20" y="100" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ks2-Wt-XN0">
+                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guitarBackground" id="2mn-67-ifD">
+                                        <rect key="frame" x="45" y="0.0" width="240" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guitar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Foc-o9-3zq">
+                                        <rect key="frame" x="70" y="5" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.98823529409999999" green="0.8862745098" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Ze8-fv-tpP" userLabel="Electric content View">
+                                <rect key="frame" x="20" y="180" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="electricBackground" id="xmb-ho-kHe" userLabel="electricBackground">
+                                        <rect key="frame" x="45" y="0.0" width="240" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hp1-Gr-xuW">
+                                        <rect key="frame" x="70" y="5" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.98823529409999999" green="0.8862745098" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Qx-3X-eDf">
+                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="g7z-54-JPi" userLabel="Bass content View">
+                                <rect key="frame" x="20" y="260" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bassBackgroud" id="ZBi-J1-LGk" userLabel="bassBackground">
+                                        <rect key="frame" x="45" y="0.0" width="240" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ScL-dN-ppo">
+                                        <rect key="frame" x="70" y="5" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.98823529409999999" green="0.8862745098" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cX8-2W-PoH">
+                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="0Kc-yN-6SI" userLabel="Banjo content View">
+                                <rect key="frame" x="20" y="340" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banjoBackground" id="lmd-DO-Yle" userLabel="banjoBackground">
+                                        <rect key="frame" x="45" y="0.0" width="240" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Banjo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wx-4G-1fR">
+                                        <rect key="frame" x="70" y="5" width="100" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.98823529409999999" green="0.8862745098" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cna-we-Tbn">
+                                        <rect key="frame" x="5" y="5" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.82352941180000006" green="0.0" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="b2C-kN-AWZ" appends="YES" id="3f3-af-k3k"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="9WQ-e8-bLw" id="FL6-NI-suF"/>
+                        <outlet property="banjoBackgroundView" destination="lmd-DO-Yle" id="g9V-9q-gW4"/>
+                        <outlet property="banjoContentView" destination="0Kc-yN-6SI" id="Kzw-sX-Dfz"/>
+                        <outlet property="banjoPercentLabel" destination="cna-we-Tbn" id="iJf-D5-yRc"/>
+                        <outlet property="bassBackgrounfView" destination="ZBi-J1-LGk" id="3Rz-QV-a2y"/>
+                        <outlet property="bassContentView" destination="g7z-54-JPi" id="FeQ-FK-vAj"/>
+                        <outlet property="bassPercentLabel" destination="cX8-2W-PoH" id="WOk-1C-CZi"/>
+                        <outlet property="electricBackgroundView" destination="xmb-ho-kHe" id="rMl-5t-tLO"/>
+                        <outlet property="electricContentView" destination="Ze8-fv-tpP" id="aNR-tD-9nu"/>
+                        <outlet property="electricPercentLabel" destination="4Qx-3X-eDf" id="6ee-yn-IpV"/>
+                        <outlet property="guitarBackgroundView" destination="2mn-67-ifD" id="pog-7W-zTb"/>
+                        <outlet property="guitarConrentView" destination="Cvf-39-KI8" id="hiu-Di-jTp"/>
+                        <outlet property="guitarPercentLabel" destination="Ks2-Wt-XN0" id="lQe-2d-eoQ"/>
+                        <outlet property="infoLabel" destination="2Lp-CL-97L" id="bA7-tu-1jI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeJ-K7-N4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="b2C-kN-AWZ">
+                    <connections>
+                        <action selector="longPreesGestureDidDone:" destination="YFN-c2-AfY" id="5Ms-R2-6d6"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="298" y="120"/>
+            <point key="canvasLocation" x="159" y="90"/>
         </scene>
     </scenes>
     <resources>
         <image name="backgroundImage" width="320" height="480"/>
+        <image name="banjo" width="44" height="120"/>
+        <image name="banjoBackground" width="76" height="120"/>
         <image name="bass" width="39" height="120"/>
         <image name="bassBackgroud" width="114" height="180"/>
+        <image name="electricBackground" width="76" height="120"/>
+        <image name="guitar" width="46" height="120"/>
+        <image name="guitarBackground" width="76" height="120"/>
     </resources>
 </document>
