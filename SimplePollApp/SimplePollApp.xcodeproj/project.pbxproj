@@ -19,6 +19,7 @@
 		8B96B7DF1C41829A006D05A9 /* SPAReflectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B7DE1C41829A006D05A9 /* SPAReflectingView.m */; };
 		8BA6095E1C4506CE0009C2F8 /* SPAPoolResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6095D1C4506CE0009C2F8 /* SPAPoolResultsViewController.m */; };
 		8BA609611C450DCA0009C2F8 /* SPAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA609601C450DCA0009C2F8 /* SPAUser.m */; };
+		8BC63A9B1C4C03B800DE6302 /* SPAWebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC63A9A1C4C03B800DE6302 /* SPAWebServiceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		8BA6095D1C4506CE0009C2F8 /* SPAPoolResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPoolResultsViewController.m; sourceTree = "<group>"; };
 		8BA6095F1C450DCA0009C2F8 /* SPAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAUser.h; sourceTree = "<group>"; };
 		8BA609601C450DCA0009C2F8 /* SPAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAUser.m; sourceTree = "<group>"; };
+		8BC63A991C4C03B800DE6302 /* SPAWebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAWebServiceManager.h; sourceTree = "<group>"; };
+		8BC63A9A1C4C03B800DE6302 /* SPAWebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAWebServiceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 				8B7CA0BB1C43D5690070B436 /* SPAWebServiceAPI.m */,
 				8B7CA0B71C43CE870070B436 /* MyDownloader.h */,
 				8B7CA0B81C43CE870070B436 /* MyDownloader.m */,
+				8BC63A991C4C03B800DE6302 /* SPAWebServiceManager.h */,
+				8BC63A9A1C4C03B800DE6302 /* SPAWebServiceManager.m */,
 			);
 			name = "Web Service API";
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				8B7CA0C21C4413B70070B436 /* SPACurrentModel.m in Sources */,
 				8B7CA0BC1C43D5690070B436 /* SPAWebServiceAPI.m in Sources */,
 				8B96B7DF1C41829A006D05A9 /* SPAReflectingView.m in Sources */,
+				8BC63A9B1C4C03B800DE6302 /* SPAWebServiceManager.m in Sources */,
 				8B1E5F1E1C45497100777F30 /* SPAUserSelection.m in Sources */,
 				8B96B7C21C411AA5006D05A9 /* AppDelegate.m in Sources */,
 				8B7CA0B91C43CE870070B436 /* MyDownloader.m in Sources */,

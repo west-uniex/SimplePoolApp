@@ -69,7 +69,7 @@
 
 - (NSString *) description
 {
-	return [NSString stringWithFormat:@"Name:%@\nDenre Selection = %ul", self.name, self.genreSelection];
+	return [NSString stringWithFormat:@"Name:%@\nDenre Selection = %lul", self.name, (unsigned long)self.genreSelection];
 }
 
 

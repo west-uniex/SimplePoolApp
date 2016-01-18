@@ -61,6 +61,9 @@ static NSString *SERVER_URL = @"https://demo7130406.mockable.io";
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: urlSubmitPool];
 	request.HTTPMethod           = @"POST";
+	//[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	//[request addValue:@"*/*" forHTTPHeaderField:@"Accept"];
+	//[request addValue:@"0"  forHTTPHeaderField:@"Content-Length"];
 	
 	return request;
 }
@@ -75,6 +78,9 @@ static NSString *SERVER_URL = @"https://demo7130406.mockable.io";
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: urlSubmitPool];
 	request.HTTPMethod           = @"GET";
+	//[request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	//[request addValue:@"*/*" forHTTPHeaderField:@"Accept"];
+	//[request addValue:@"0"  forHTTPHeaderField:@"Content-Length"];
 	
 	return request;
 }

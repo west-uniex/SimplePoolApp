@@ -27,9 +27,19 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView       *backgroundImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel           *pickYourGemreLabel;
+
+@property (weak, nonatomic) IBOutlet UIView            *bassContentView;
 @property (weak, nonatomic) IBOutlet SPAReflectingView *bassReflectingView;
+
+@property (weak, nonatomic) IBOutlet UIView            *electricContentView;
 @property (weak, nonatomic) IBOutlet SPAReflectingView *electricReflectingView;
+
+
+@property (weak, nonatomic) IBOutlet UIView            *guitarContentView;
 @property (weak, nonatomic) IBOutlet SPAReflectingView *guitarReflectingView;
+
+@property (weak, nonatomic) IBOutlet UIView            *banjoContentView;
 @property (weak, nonatomic) IBOutlet SPAReflectingView *banjoReflectingView;
 
 @property (weak, nonatomic) IBOutlet UIView            *textFieldContentView;
@@ -74,12 +84,30 @@
 	
 	if (YES == [SPACurrentModel sharedManager].isiPhone4)
 	{
-		
+		self.textFieldContentView.frame = CGRectMake( self.textFieldContentView.frame.origin.x, self.textFieldContentView.frame.origin.y - 60, self.textFieldContentView.frame.size.width, self.textFieldContentView.frame.size.height);
 	}
 	
 	if (YES == [SPACurrentModel sharedManager].isiPhone6)
 	{
+		self.textFieldContentView.frame = CGRectMake( (375 - self.textFieldContentView.frame.size.width)/2 , self.textFieldContentView.frame.origin.y + 100, self.textFieldContentView.frame.size.width, self.textFieldContentView.frame.size.height);
 		
+		self.pickYourGemreLabel.center = CGPointMake( 375/2, 70 );
+		self.bassContentView.frame     = CGRectMake( 27, 200, 60, 240);
+		self.electricContentView.frame = CGRectMake(114, 200, 60, 240);
+		self.guitarContentView.frame   = CGRectMake(201, 200, 60, 240);
+		self.banjoContentView.frame    = CGRectMake(288, 200, 60, 240);
+	}
+	
+	
+	if (YES == [SPACurrentModel sharedManager].isiPhone6Plus)
+	{
+		self.textFieldContentView.frame = CGRectMake( (414 - self.textFieldContentView.frame.size.width)/2 , self.textFieldContentView.frame.origin.y + 150, self.textFieldContentView.frame.size.width, self.textFieldContentView.frame.size.height);
+		
+		self.pickYourGemreLabel.center = CGPointMake( 207, 100 );
+		self.bassContentView.frame     = CGRectMake( 42, 250, 60, 240);
+		self.electricContentView.frame = CGRectMake(132, 250, 60, 240);
+		self.guitarContentView.frame   = CGRectMake(222, 250, 60, 240);
+		self.banjoContentView.frame    = CGRectMake(312, 250, 60, 240);
 	}
 	
 	[self.bassReflectingView     setupReflectionWithShrinkFactor: 1.0 ];
@@ -121,19 +149,7 @@
 	[_editedTextField resignFirstResponder];
 }
 
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark set needed status bar style
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -141,12 +157,13 @@
 }
 
 
-
+#pragma mark custom getter for check true name
 
 - (BOOL) isUserNameSet
 {
+	BOOL isEmpty = [[self.userNameTextFiled.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0;
 	//Type your name here
-	if ( (self.userNameTextFiled.text.length > 0) && (![self.userNameTextFiled.text isEqualToString: @" "]) && (![self.userNameTextFiled.text isEqualToString: @"Type your name here"])) // need description forbidden names
+	if ( (self.userNameTextFiled.text.length > 0) && (!isEmpty) && (![self.userNameTextFiled.text isEqualToString: @"Type your name here"])) // need description forbidden names
 	{
 		return YES;
 	}
@@ -282,14 +299,32 @@
 	
 	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6])
 	{
+		if (textField == self.userNameTextFiled)
+		{
+			self.scrollView.contentOffset = CGPointMake(0, 280);
+		}
+		
 		self.scrollView.contentSize = CGSizeMake(320, 849);
 	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6Plus])
+	{
+		if (textField == self.userNameTextFiled)
+		{
+			self.scrollView.contentOffset = CGPointMake(0, 320);
+		}
+		
+		self.scrollView.contentSize = CGSizeMake(414, 920);
+	}
+	
 	
 	_editedTextField                    = textField;
 	_editedTextField.inputAccessoryView = [self accessoryView];
 	
-	[self clearText];
-	
+	if ([_editedTextField.text isEqualToString:@"Type your name here"])
+	{
+		[self clearText];
+	}
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -309,6 +344,11 @@
 	}
 	
 	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6])
+	{
+		self.scrollView.contentSize = CGSizeMake(320, 603);
+	}
+	
+	if ( YES ==[[SPACurrentModel sharedManager] isiPhone6Plus])
 	{
 		self.scrollView.contentSize = CGSizeMake(320, 603);
 	}

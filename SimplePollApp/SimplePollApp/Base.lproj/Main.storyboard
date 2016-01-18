@@ -168,10 +168,15 @@
                     <navigationItem key="navigationItem" id="vHS-Bc-6XL"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="c3G-rT-itK" id="0aU-fL-e3l"/>
+                        <outlet property="banjoContentView" destination="iRH-eb-P7d" id="Pfl-DQ-5Jh"/>
                         <outlet property="banjoReflectingView" destination="mZU-mV-Esd" id="Syx-lo-51Z"/>
+                        <outlet property="bassContentView" destination="KX9-j9-add" id="U6i-bL-d9e"/>
                         <outlet property="bassReflectingView" destination="SkD-rm-hHm" id="gnJ-um-ubt"/>
+                        <outlet property="electricContentView" destination="7Kn-Ok-UeJ" id="llB-md-bmK"/>
                         <outlet property="electricReflectingView" destination="IjE-0D-AgE" id="hfS-cq-Sze"/>
+                        <outlet property="guitarContentView" destination="fnq-rB-Veq" id="l0T-8V-77Z"/>
                         <outlet property="guitarReflectingView" destination="nTH-m8-cJY" id="1CA-ng-dVW"/>
+                        <outlet property="pickYourGemreLabel" destination="IBS-Wo-ELg" id="USi-ji-Xz8"/>
                         <outlet property="scrollView" destination="8bC-Xf-vdC" id="VRX-8E-C9i"/>
                         <outlet property="textFieldContentView" destination="zeG-qN-mnZ" id="a2M-ou-x9B"/>
                         <outlet property="userNameTextFiled" destination="8SI-qN-fCm" id="A4i-GL-8ZH"/>
@@ -329,6 +334,7 @@
                         <outlet property="guitarConrentView" destination="Cvf-39-KI8" id="hiu-Di-jTp"/>
                         <outlet property="guitarPercentLabel" destination="Ks2-Wt-XN0" id="lQe-2d-eoQ"/>
                         <outlet property="infoLabel" destination="2Lp-CL-97L" id="bA7-tu-1jI"/>
+                        <outlet property="resultsLabel" destination="dIR-op-dWL" id="do2-Ud-6DP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeJ-K7-N4J" userLabel="First Responder" sceneMemberID="firstResponder"/>

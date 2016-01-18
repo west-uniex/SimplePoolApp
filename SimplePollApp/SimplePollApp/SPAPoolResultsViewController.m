@@ -10,34 +10,36 @@
 #import "SPACurrentModel.h"
 #import "SPAUserSelection.h"
 #import "SPAWebServiceAPI.h"
+#import "SPAWebServiceManager.h"
 
 
 typedef void (^CompletionHandlerType)();
 
-@interface SPAPoolResultsViewController () <NSURLSessionDelegate>
+@interface SPAPoolResultsViewController ()
 
-@property (nonatomic, strong) NSURLSession         *defaultSession;
-@property (nonatomic, strong) NSURLProtectionSpace *trustSpace;
+
+@property (nonatomic, strong) UIAlertController    *alertNetworkActivity;
 
 // UI
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel     *resultsLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *guitarConrentView;
-@property (weak, nonatomic) IBOutlet UILabel *guitarPercentLabel;
+@property (weak, nonatomic) IBOutlet UIView      *guitarConrentView;
+@property (weak, nonatomic) IBOutlet UILabel     *guitarPercentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *guitarBackgroundView;
 
-@property (weak, nonatomic) IBOutlet UIView *electricContentView;
-@property (weak, nonatomic) IBOutlet UILabel *electricPercentLabel;
+@property (weak, nonatomic) IBOutlet UIView      *electricContentView;
+@property (weak, nonatomic) IBOutlet UILabel     *electricPercentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *electricBackgroundView;
 
-@property (weak, nonatomic) IBOutlet UIView *bassContentView;
-@property (weak, nonatomic) IBOutlet UILabel *bassPercentLabel;
+@property (weak, nonatomic) IBOutlet UIView      *bassContentView;
+@property (weak, nonatomic) IBOutlet UILabel     *bassPercentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bassBackgrounfView;
 
-@property (weak, nonatomic) IBOutlet UIView *banjoContentView;
-@property (weak, nonatomic) IBOutlet UILabel *banjoPercentLabel;
+@property (weak, nonatomic) IBOutlet UIView      *banjoContentView;
+@property (weak, nonatomic) IBOutlet UILabel     *banjoPercentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *banjoBackgroundView;
 
 
@@ -55,25 +57,11 @@ typedef void (^CompletionHandlerType)();
 	
 	if (self)
 	{
-		NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-	
-		_trustSpace = [[NSURLProtectionSpace alloc] initWithHost: @"https://demo7130406.mockable.io"
-															port: 443
-														protocol: NSURLProtectionSpaceHTTPS
-														   realm: @"mobile"
-											authenticationMethod: NSURLAuthenticationMethodServerTrust];
-		
-		//defaultConfigObject.URLCredentialStorage = [NSURLCredentialStorage sharedCredentialStorage];
-		
-		_defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject
-														delegate: self
-												   delegateQueue: [NSOperationQueue mainQueue]];;
+
 	}
 	
 	return self;
 }
-
-
 
 - (void)viewDidLoad
 {
@@ -90,6 +78,8 @@ typedef void (^CompletionHandlerType)();
 	
 	// make more dark the background view
 	
+	
+	//mainScreenFrame          = CGRectMake(0, 20, mainScreenFrame.size.width, mainScreenFrame.size.height - 20);
 	UIView *darkView         = [[UIView alloc] initWithFrame: mainScreenFrame];
 	darkView.backgroundColor = [UIColor blackColor];
 	darkView.alpha           = 0.6;
@@ -102,7 +92,24 @@ typedef void (^CompletionHandlerType)();
 	
 	if (YES == [SPACurrentModel sharedManager].isiPhone6)
 	{
+		self.resultsLabel.center = CGPointMake( 188, 100 );
+		self.infoLabel.center    = CGPointMake( 188, 550);
 		
+		self.guitarConrentView.center   = CGPointMake( 188, 180);
+		self.electricContentView.center = CGPointMake( 188, 270);
+		self.bassContentView.center     = CGPointMake( 188, 360);
+		self.banjoContentView.center    = CGPointMake( 188, 450);
+	}
+	
+	if (YES == [SPACurrentModel sharedManager].isiPhone6Plus)
+	{
+		self.resultsLabel.center = CGPointMake( 207, 100 );
+		self.infoLabel.center    = CGPointMake( 207, 600);
+		
+		self.guitarConrentView.center   = CGPointMake( 207, 200);
+		self.electricContentView.center = CGPointMake( 207, 300);
+		self.bassContentView.center     = CGPointMake( 207, 400);
+		self.banjoContentView.center    = CGPointMake( 207, 500);
 	}
 	
 	self.guitarBackgroundView.alpha   = 0.6;
@@ -111,76 +118,10 @@ typedef void (^CompletionHandlerType)();
 	self.banjoBackgroundView.alpha    = 0.6;
 	
 	
-	DLog(@"\ncurrent user name: %@ \nuser selection: %ul\n\n", self.currentUserSelection.name, self.currentUserSelection.genreSelection);
+	DLog(@"\ncurrent user name: %@ \nuser selection: %lul\n\n", self.currentUserSelection.name, (unsigned long)self.currentUserSelection.genreSelection);
 	
 	//
-	//    POST selection through session task
-	//
-	
-	//NSMutableURLRequest *requestGenreChoice = [SPAWebServiceAPI requestPOSTUserSelection: self.currentUserSelection.genreSelection
-	//																 withUserName: self.currentUserSelection.name ];
-	NSMutableURLRequest *requestGenreChoice = [SPAWebServiceAPI requestGetPoolResults];
-	
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	
-	NSURLSessionDataTask *postUserChoiceTask = [_defaultSession dataTaskWithRequest: requestGenreChoice
-																  completionHandler: ^(NSData * __nullable data, NSURLResponse * __nullable response,
-																					   NSError * __nullable error)
-	{
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-		
-		DLog(@"%@", @"here");
-		if (error)
-		{
-			NSLog(@"%@", error);
-			
-			return;
-		}
-		
-		NSInteger status = [(NSHTTPURLResponse*)response statusCode];
-		DLog(@"response status: %i", status);
-		
-		if (status != 200 )
-		{
-			DLog(@"%@", @"oh well");
-			
-			if (status == 403 )
-			{
-				__weak UIViewController *pvc =  self.presentingViewController;
-				/*
-				[self dismissViewControllerAnimated: YES
-										 completion: ^(void)
-				 {
-					 UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"we does not have permission to get URL"
-																			   message: @"please be patient"
-																		preferredStyle: UIAlertControllerStyleAlert];
-				
-					 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
-																		style: UIAlertActionStyleDefault
-																	  handler: ^(UIAlertAction * action) {}];
-				
-					 [alert addAction:defaultAction];
-					 [pvc presentViewController:alert animated:YES completion:nil];
-				
-				 }];
-				 */
-				return;
-			}
-		}
-		
-
-		dispatch_async(dispatch_get_main_queue(), ^
-        {
-			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-			//self.textView.text = text;
-
-			DLog(@"%@\n\n", @"done");
-		});
-
-	}];
-	
-	[postUserChoiceTask resume];
-	
+	[self xxxHandleSelection];
 }
 
 
@@ -189,11 +130,9 @@ typedef void (^CompletionHandlerType)();
 	[super viewWillAppear:animated];
 	
 	// modeling get good response from server
-	
 	//{	"banjo": 10, 	"bass": 25, "electric": 40, "guitar": 25, "status": "ok"}
-	NSDictionary *response = @{ @"banjo": @10, @"bass": @25, @"electric": @40, @"guitar": @25, @"status": @"ok"};
-	
-	[self xxxUpdadeUIFromResponseDictionary: response];
+	//NSDictionary *response = @{ @"banjo": @10, @"bass": @25, @"electric": @40, @"guitar": @25, @"status": @"ok"}
+	//[self xxxUpdadeUIFromResponseDictionary: response];
 	
 }
 
@@ -206,10 +145,152 @@ typedef void (^CompletionHandlerType)();
 	DLog(@" ");
 }
 
+#pragma mark set needed status bar style
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+	return UIStatusBarStyleLightContent;
+}
+
 #pragma mark  internal methods
 
 
-- (void) xxxUpdadeUIFromResponseDictionary: (NSDictionary *) response
+- (void) xxxHandleSelection
+{
+	NSURLRequest *selectionRequest = [[SPAWebServiceAPI requestPOSTUserSelection: self.currentUserSelection.genreSelection
+																    withUserName: self.currentUserSelection.name] copy];
+	__weak __typeof__ (self) weakSelf = self;
+	__weak UIViewController  *weakPVC = self.presentingViewController;
+	
+	self.alertNetworkActivity = [UIAlertController alertControllerWithTitle: @"Message from Application"
+																	message: @"Your Selection  have sent to server\n"
+															 preferredStyle: UIAlertControllerStyleAlert];
+	
+	[self presentViewController: self.alertNetworkActivity animated: NO completion: nil];
+	
+	[[SPAWebServiceManager sharedManager] POSTUserSelectionWithRequest: selectionRequest
+												 withCompletionHandler: ^ (NSDictionary *responce, NSError *error)
+	{
+		__strong __typeof__(self) strongSelf = weakSelf;
+		UIViewController * strongPVC = weakPVC;
+		
+		if (!error)
+		{
+			[strongSelf xxxGetPoolResultsFromSelf: weakSelf  isWeakSelf: YES];
+			
+			__weak __typeof__ (self) weakSelf2 = strongSelf;
+			[strongSelf dismissViewControllerAnimated: YES
+									 completion: ^(void)
+			{
+				__strong __typeof__(self) strongSelf2 = weakSelf2;
+				if (!strongSelf2)
+				{
+					DLog(@"\nLook HERE !!!\n\n");
+					sleep(0);
+				}
+				
+				strongSelf2.alertNetworkActivity = [UIAlertController alertControllerWithTitle: @"Message from Server"
+																		      message: @"Your Selection successfully updated on server"
+																	 preferredStyle: UIAlertControllerStyleAlert];
+				[strongSelf2 presentViewController: strongSelf2.alertNetworkActivity
+										  animated: YES
+										completion: nil];
+			}];
+		}
+		else
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				__strong __typeof__(self) strongSelf = weakSelf;
+				DLog(@"\nerror: %@\n\n", error);
+				//strongSelf.alertNetworkActivity = nil;
+				
+				UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"Network error"
+																			   message: error.localizedDescription
+																		preferredStyle: UIAlertControllerStyleAlert];
+				
+				UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+																		style: UIAlertActionStyleDefault
+																	  handler: ^(UIAlertAction * action) {}];
+				
+				[alert addAction:defaultAction];
+
+				[strongSelf dismissViewControllerAnimated: YES
+											   completion: ^(void)
+				 {
+					__strong __typeof__(self) strongSelf2 = weakSelf;
+					 [strongSelf2 dismissViewControllerAnimated: YES
+													 completion: ^(void)
+					 {
+						 [strongPVC presentViewController:alert animated:YES completion:nil];
+													 }];
+				 }];
+				
+				return;
+			});
+		}
+	}];
+}
+
+- (void) xxxGetPoolResultsFromSelf: (SPAPoolResultsViewController *) prvc  isWeakSelf: (BOOL) flagSelf
+{
+	if (flagSelf == YES)
+	{
+		__strong typeof(self)self = prvc;
+		[self xxxGetPoolResults];
+	}
+	else
+	{
+		[self xxxGetPoolResults];
+	}
+	
+}
+
+- (void) xxxGetPoolResults
+{
+	NSURLRequest *poolRequest = [[SPAWebServiceAPI requestGetPoolResults] copy];
+	__weak __typeof__ (self) weakSelf = self;
+	__weak UIViewController  *weakPVC = self.presentingViewController;
+	
+	[[SPAWebServiceManager sharedManager] GETPoolResultsWithRequest: poolRequest
+ 											 withCompletionHandler: ^ (NSDictionary *responce, NSError *error)
+	 {
+		 __strong __typeof__(weakSelf) strongSelf = weakSelf;
+		 UIViewController * strongPVC = weakPVC;
+		 
+		 if (!error)
+		 {
+			 [self xxxUpdadeUIFromPoolResponseDictionary: responce];
+		 }
+		 else
+		 {
+			 dispatch_async(dispatch_get_main_queue(), ^
+							{
+								DLog(@"%@\n\n", error);
+								[strongSelf dismissViewControllerAnimated: YES
+															   completion: ^(void)
+								 {
+									 //UIViewController * strongPVC = weakPVC;
+									 UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"Network error"
+																									message: error.localizedDescription
+																							 preferredStyle: UIAlertControllerStyleAlert];
+									 
+									 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+																							 style: UIAlertActionStyleDefault
+																						   handler: ^(UIAlertAction * action) {}];
+									 
+									 [alert addAction:defaultAction];
+									 [strongPVC presentViewController:alert animated:YES completion:nil];
+								 }];
+								
+								return;
+							});
+		 }
+	 }];
+}
+
+
+- (void) xxxUpdadeUIFromPoolResponseDictionary: (NSDictionary *) response
 {
 
 	float sum = [(NSNumber *) response[@"banjo"]  floatValue] + [(NSNumber *) response[@"bass"]  floatValue] + [(NSNumber *) response[@"electric"]  floatValue] + [(NSNumber *) response[@"guitar"]  floatValue];
@@ -273,99 +354,15 @@ typedef void (^CompletionHandlerType)();
 			break;
 	}
 	
-}
-
-
-
-#pragma mark  NSURLSessionDelegate conforming
-
-- (void)               URLSession:(NSURLSession     *)session
-        didBecomeInvalidWithError:(nullable NSError *)error
-{
-	DLog(@"challenge: %@  \n\n", error);
-	sleep(0);
-}
-
-- (void) URLSession: (NSURLSession                 *) session
-didReceiveChallenge: (NSURLAuthenticationChallenge *) challenge
-  completionHandler: (void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential)) completionHandler
-{
-	DLog(@"challenge: %@\n \n\n", challenge);
-	sleep(0);
-	/*
-	NSURLCredentialPersistence persistence = NSURLCredentialPersistenceForSession;
-	NSURLCredential *credential = [NSURLCredential credentialWithUser: @" "
-															 password: @" "
-														  persistence:persistence];
-	completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+	UIAlertAction* defaultAction = [UIAlertAction actionWithTitle: @"OK"
+															style: UIAlertActionStyleDefault
+														  handler: ^(UIAlertAction * action) {}];
+	[self.alertNetworkActivity setTitle: @"Message from Application"];
+	[self.alertNetworkActivity setMessage: @"Results Pool successfully get From Server"];
+	[self.alertNetworkActivity addAction: defaultAction];
 	
-	return;
-	*/
-	
-	if ([challenge.protectionSpace.authenticationMethod isEqualToString: NSURLAuthenticationMethodServerTrust])
-	{
-		SecTrustResultType result;
-		OSStatus status = SecTrustEvaluate (challenge.protectionSpace.serverTrust,  &result);
-		BOOL isTrustValid = status == noErr && (result == kSecTrustResultUnspecified || result == kSecTrustResultProceed);
-		
-		if (isTrustValid)
-		{
-			NSURLCredential *credential = [NSURLCredential credentialForTrust: challenge.protectionSpace.serverTrust];
-			
-			[[challenge sender] useCredential:credential forAuthenticationChallenge: challenge];
-			completionHandler ( NSURLSessionAuthChallengePerformDefaultHandling, credential );
-			
-		}
-		else
-		{
-			[[challenge sender] cancelAuthenticationChallenge: challenge];
-		}
-	}
-	else
-	{
-		if ([challenge previousFailureCount] == 0)
-		{
-			/*
-			if (self.credential)
-			{
-				[[challenge sender] useCredential: self.credential
-					   forAuthenticationChallenge: challenge];
-			} else
-			{
-				[[challenge sender]  continueWithoutCredentialForAuthenticationChallenge: challenge];
-			}
-			 */
-		}
-		else
-		{	// if nothing catches this challenge, attempt to connect without credentials
-			[[challenge sender] continueWithoutCredentialForAuthenticationChallenge: challenge];
-		}
-	}
-
 }
 
-
-
-#pragma mark NSURLSessionTaskDelegate 
-
-- (void)         URLSession: (NSURLSession                 *)session
-					   task: (NSURLSessionTask             *)task
-        didReceiveChallenge: (NSURLAuthenticationChallenge *)challenge
-		  completionHandler: (void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler
-{
-	DLog(@"challenge: %@  \n\n", challenge);
-	sleep(0);
-}
-
-
-
-#pragma mark NSURLConnectionDelegate
-- (void)                                connection: (NSURLConnection              *) connection
-         willSendRequestForAuthenticationChallenge: (NSURLAuthenticationChallenge *) challenge
-{
-	DLog(@"challenge: %@  \n\n", challenge);
-	sleep(0);
-}
 
 
 #pragma mark IB Actions

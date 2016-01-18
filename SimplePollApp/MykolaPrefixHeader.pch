@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #endif
 
+//  thanks Mr. Marcus Zarra -> Core Data (2nd edition) Data Storage and Management for iOS, OS X, and iCloud
 
 #ifdef DEBUG
 
@@ -29,12 +30,3 @@
 #endif
 
 #define ZAssert(condition, ...) do { if (!(condition)) { ALog(__VA_ARGS__); }} while(0)
-
-
-/*
-<key>NSAppTransportSecurity</key>
-<dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
-</dict>
-*/
